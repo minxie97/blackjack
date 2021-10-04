@@ -34,10 +34,14 @@ acceptance test
 * Ensure that only two cards are dealt to dealer and player
 * Ensure that dealer's cards are face down
 
-As a BlackJack player, I want the cards to add up correctly.
+As a BlackJack player, I want the cards to add up.
 
+feature task
 * Each card should contain a value
 * Value of the cards add together when in the hands of player/dealer
+
+acceptance test
+* The values add up correctly
 
 As a BlackJack player, I want to choose whether to hit or stand.
 
@@ -64,6 +68,7 @@ feature tasks:
   * Notify player they have lost
 * Else if, Notify player if dealer is over 21
   * Notify player if they have won
+* When player or the dealer loses. Return to start screen.
 
 As a user who has never played blackjack before I want to use this app to learn how to play.
 
