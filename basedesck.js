@@ -10,6 +10,7 @@ function CardBuilder(gameValue, suit, number){
   this.gameValue = gameValue;
   this.suit = suit;
   this.number = number;
+  
 }
 
 let aceClub = new CardBuilder(1, 'clubs', 'ace');
@@ -64,8 +65,6 @@ let kingClub = new CardBuilder(10, 'clubs', 'king');
 let kingDiamond = new CardBuilder(10, 'diamond', 'king');
 let kingHearts = new CardBuilder(10, 'hearts', 'king');
 let kingSpades = new CardBuilder(10, 'spades', 'king');
-
-console.log(tenSpades);
 
 const baseDeck = [];
 baseDeck.push(
@@ -122,5 +121,62 @@ baseDeck.push(
   kingHearts,
   kingSpades
 );
+
+// Durstenfeld Shuffle - create randomized deck array
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+
+shuffleArray(baseDeck);
+console.log(baseDeck);
+
+// hand variables
+
+let playerHandCount = 0;
+let dealerHandCount = 0;
+let playerHand = [];
+let dealerHand = [];
+
+// deal two cards to player and dealer
+
+function dealHandInitial (){
+  while (playerHandCount < 2){
+    let nextCard = baseDeck.pop();
+    playerHand.push(nextCard);
+    playerHandCount++;
+  }
+  while (dealerHandCount < 2){
+    let nextCard = baseDeck.pop();
+    dealerHand.push(nextCard);
+    dealerHandCount++;
+  }
+}
+
+dealHandInitial();
+console.log(playerHand);
+console.log(dealerHand);
+
+function sum(a, b) {
+  let total = a + b;
+  return total;
+}
+
+function getTotalValue(array){
+  let value = sum(array[0].gameValue, array[1].gameValue);
+  for (let i = 2; i < array.length; i++){
+    value = sum(value, array[i].gameValue);
+  }
+  console.log(value);
+}
+
+getTotalValue(playerHand);
+getTotalValue(dealerHand);
+
 
 
