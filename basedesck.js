@@ -182,6 +182,9 @@ function dealHandInitial() {
     dealerHandCount++;
   }
   dealerHandRender(dealerHand);
+  getTotalValue(playerHand);
+  getTotalValue(dealerHand);
+  handValue(getTotalValue(playerHand));
   console.log(dealerHand);
 }
 
@@ -190,6 +193,10 @@ let hitEl = document.getElementById("hit-button");
 hitEl.addEventListener('click', playerHit); //need to add card render function
 stayEl.addEventListener('click', playerStand);
 
+function handValue(playerTotal) {
+  let handEl = document.getElementById("hand-value");
+  handEl.innerText = "Current hand value: " + playerTotal;
+}
 
 //allows player to request an additional card if not at 21
 function playerHit(event) {
@@ -202,6 +209,7 @@ function playerHit(event) {
   console.log(playerTotal);
   playerHandEl.innerHTML = '';
   playerHandRender(playerHand);
+  handValue(playerTotal);
 }
 
 //function takes in event listener and kicks off auto deal to add cards
@@ -270,3 +278,7 @@ function selectWinner (){
     }
   }
 }
+
+
+// Print player hand value to screen
+
