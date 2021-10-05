@@ -69,63 +69,66 @@ let kingSpades = new CardBuilder(10, 'spades', 'king', 'assets/imgs/cards/vintag
 console.log(aceClubs);
 
 const baseDeck = [];
-baseDeck.push(
-  aceClubs,
-  aceDiamonds,
-  aceHearts,
-  aceSpades,
-  twoClubs ,
-  twoDiamonds,
-  twoHearts,
-  twoSpades,
-  threeClubs,
-  threeDiamonds,
-  threeHearts ,
-  threeSpades,
-  fourClubs,
-  fourDiamonds,
-  fourHearts,
-  fourSpades,
-  fiveClubs,
-  fiveDiamonds,
-  fiveHearts,
-  fiveSpades,
-  sixClubs,
-  sixDiamonds,
-  sixHearts,
-  sixSpades,
-  sevenClubs,
-  sevenDiamonds,
-  sevenHearts,
-  sevenSpades,
-  eightClubs,
-  eightDiamonds,
-  eightHearts,
-  eightSpades,
-  nineClubs,
-  nineDiamonds,
-  nineHearts,
-  nineSpades,
-  tenClubs,
-  tenDiamonds,
-  tenHearts,
-  tenSpades,
-  jackClubs,
-  jackDiamonds,
-  jackHearts,
-  jackSpades,
-  queenClubs,
-  queenDiamonds,
-  queenHearts,
-  queenSpades,
-  kingClubs,
-  kingDiamonds,
-  kingHearts,
-  kingSpades
-);
+const decksPlayed = 1;
+
+for (let i = 0; i < decksPlayed; i++) {
+  baseDeck.push(
+    aceClub,
+    aceDiamond,
+    aceHearts,
+    aceSpades,
+    twoClub ,
+    twoDiamond,
+    twoHearts,
+    twoSpades,
+    threeClub,
+    threeDiamond,
+    threeHearts ,
+    threeSpades,
+    fourClub,
+    fourDiamond,
+    fourHearts,
+    fourSpades,
+    fiveClub,
+    fiveDiamond,
+    fiveHearts,
+    fiveSpades,
+    sixClub,
+    sixDiamond,
+    sixHearts,
+    sixSpades,
+    sevenClub,
+    sevenDiamond,
+    sevenHearts,
+    sevenSpades,
+    eightClub,
+    eightDiamond,
+    eightHearts,
+    eightSpades,
+    nineClub,
+    nineDiamond,
+    nineHearts,
+    nineSpades,
+    tenClub,
+    tenDiamond,
+    tenHearts,
+    tenSpades,
+    jackClub,
+    jackDiamond,
+    jackHearts,
+    jackSpades,
+    queenClub,
+    queenDiamond,
+    queenHearts,
+    queenSpades,
+    kingClub,
+    kingDiamond,
+    kingHearts,
+    kingSpades
+  );
+}
 
 console.log(baseDeck);
-
 // Durstenfeld Shuffle - create randomized deck array
 
 function shuffleArray(array) {
@@ -176,11 +179,38 @@ function getTotalValue(array){
   for (let i = 2; i < array.length; i++){
     value = sum(value, array[i].gameValue);
   }
-  console.log(value);
+  return value;
 }
 
-getTotalValue(playerHand);
-getTotalValue(dealerHand);
+let playerTotal = getTotalValue(playerHand);
+let dealerTotal = getTotalValue(dealerHand);
+console.log(playerTotal);
+console.log(dealerTotal);
 
+let gameWinner = 'none';
 
+function selectWinner (){
+  if (dealerTotal === 21) {
+    if (dealerTotal > playerTotal){
+      gameWinner = 'dealer';
+    } else if (dealerTotal === playerTotal){
+      gameWinner = 'tie';
+    }
+  } else if (dealerTotal > 21) {
+    if (playerTotal <= 21) {
+      gameWinner = 'player';
+    }
+  } else if (dealerTotal < 21) {
+    if (playerTotal < 21 && playerTotal > dealerTotal) {
+      gameWinner = 'player';
+    } else if (playerTotal < 21 && playerTotal < dealerTotal) {
+      gameWinner = 'dealer';
+    } else if (playerTotal < 21 && playerTotal === dealerTotal) {
+      gameWinner = 'tie';
+    }
+  }
+}
+
+selectWinner();
+console.log(gameWinner);
 
