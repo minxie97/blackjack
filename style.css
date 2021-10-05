@@ -6,7 +6,8 @@ h1 {
     color: white;
 }
 img {
-    height: 200px;
+    margin-top: 50px;
+    height: 260px;
     width: 200px;
 }
 #dealer-hand {
