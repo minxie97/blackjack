@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // let cardValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10'];
 // let suitOrder = ['club', 'diamonds', 'hearts', 'spades'];
@@ -83,7 +83,7 @@ for (let i = 0; i < decksPlayed; i++) {
     twoSpades,
     threeClub,
     threeDiamond,
-    threeHearts ,
+    threeHearts,
     threeSpades,
     fourClub,
     fourDiamond,
@@ -132,12 +132,12 @@ console.log(baseDeck);
 // Durstenfeld Shuffle - create randomized deck array
 
 function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    let temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
 
 shuffleArray(baseDeck);
@@ -149,29 +149,53 @@ let playerHandCount = 0;
 let dealerHandCount = 0;
 let playerHand = [];
 let dealerHand = [];
+let nextCard = baseDeck.pop();
 
 // deal two cards to player and dealer
 
-function dealHandInitial (){
-  while (playerHandCount < 2){
-    let nextCard = baseDeck.pop();
-    playerHand.push(nextCard);
+function dealHandInitial() {
+    while (playerHandCount < 2) {
+        nextCard;
+        playerHand.push(nextCard);
+        playerHandCount++;
+    }
+    while (dealerHandCount < 2) {
+        nextCard;
+        dealerHand.push(nextCard);
+        dealerHandCount++;
+    }
+}
+
+let stayEl = document.getElementById("stay-button");
+let hitEl = document.getElementById("hit-button");
+hitEl.addEventListener("click", playerHit); //need to add card render function
+stayEl.addEventListener("click", playerStand);
+
+//allows player to request an additional card if not at 21
+function playerHit(event) {
+    event.preventDefault();
+    nextCard;
+    playerHand.push(addCard);
+    getTotalValue(playerHand);
     playerHandCount++;
-  }
-  while (dealerHandCount < 2){
-    let nextCard = baseDeck.pop();
-    dealerHand.push(nextCard);
-    dealerHandCount++;
-  }
+}
+
+//function takes in event listener and kicks off auto deal to add cards
+function playerStand(event) {
+    event.preventDefault();
+    if (playerStand <= 21) {
+        dealerHandCount += nextCard;
+    }
 }
 
 dealHandInitial();
+// playerHit();
 console.log(playerHand);
 console.log(dealerHand);
 
 function sum(a, b) {
-  let total = a + b;
-  return total;
+    let total = a + b;
+    return total;
 }
 
 function getTotalValue(array){
@@ -213,4 +237,3 @@ function selectWinner (){
 
 selectWinner();
 console.log(gameWinner);
-
