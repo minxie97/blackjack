@@ -66,7 +66,6 @@ let kingDiamonds = new CardBuilder(10, 'diamonds', 'king', 'assets/imgs/cards/vi
 let kingHearts = new CardBuilder(10, 'hearts', 'king', 'assets/imgs/cards/vintage/Hearts/King.png');
 let kingSpades = new CardBuilder(10, 'spades', 'king', 'assets/imgs/cards/vintage/Spades/King.png');
 
-console.log(aceClubs);
 
 const baseDeck = [];
 const decksPlayed = 1;
@@ -149,49 +148,86 @@ let playerHandCount = 0;
 let dealerHandCount = 0;
 let playerHand = [];
 let dealerHand = [];
-let nextCard = baseDeck.pop();
 
-// deal two cards to player and dealer
+let playerHandEl = document.getElementById('player-hand');
+let dealerHandEl = document.getElementById('dealer-hand');
+
+function playerHandRender(array){
+  for (let i = 0; i < array.length; i++){
+    let cardEl = document.createElement('img');
+    cardEl.setAttribute('src', array[i].cardImage);
+    playerHandEl.appendChild(cardEl);
+  }
+}
+function dealerHandRender(array){
+  for (let i = 0; i < array.length; i++){
+    let cardEl = document.createElement('img');
+    cardEl.setAttribute('src', array[i].cardImage);
+    dealerHandEl.appendChild(cardEl);
+  }
+}
+
 
 function dealHandInitial() {
   while (playerHandCount < 2) {
-    nextCard;
+    let nextCard = baseDeck.pop();
     playerHand.push(nextCard);
     playerHandCount++;
   }
+  playerHandRender(playerHand);
+  console.log(playerHand);
   while (dealerHandCount < 2) {
-    nextCard;
+    let nextCard = baseDeck.pop();
     dealerHand.push(nextCard);
     dealerHandCount++;
   }
+  dealerHandRender(dealerHand);
+  console.log(dealerHand);
 }
 
 let stayEl = document.getElementById("stay-button");
 let hitEl = document.getElementById("hit-button");
-hitEl.addEventListener("click", playerHit); //need to add card render function
-stayEl.addEventListener("click", playerStand);
+hitEl.addEventListener('click', playerHit); //need to add card render function
+stayEl.addEventListener('click', playerStand);
+
 
 //allows player to request an additional card if not at 21
 function playerHit(event) {
   event.preventDefault();
-  nextCard;
+  let nextCard = baseDeck.pop();
   playerHand.push(nextCard);
-  getTotalValue(playerHand);
   playerHandCount++;
+  console.log(playerHand);
+  playerTotal = getTotalValue(playerHand);
+  console.log(playerTotal);
+  playerHandEl.innerHTML = '';
+  playerHandRender(playerHand);
 }
 
 //function takes in event listener and kicks off auto deal to add cards
 function playerStand(event) {
   event.preventDefault();
-  if (playerStand <= 21) {
-    dealerHandCount += nextCard;
+  if (playerTotal <= 21) {
+    while (dealerTotal < 17) {
+      let nextCard = baseDeck.pop();
+      dealerHand.push(nextCard);
+      dealerHandCount++;
+      dealerTotal = getTotalValue(dealerHand);
+      dealerHandEl.innerHTML = '';
+      dealerHandRender(dealerHand);
+      selectWinner();
+      console.log(gameWinner);
+    }
+  } else {
+    gameWinner = 'dealer';
+    console.log(gameWinner);
   }
 }
 
 dealHandInitial();
 // playerHit();
-console.log(playerHand);
-console.log(dealerHand);
+// console.log(playerHand);
+// console.log(dealerHand);
 
 function sum(a, b) {
   let total = a + b;
@@ -208,8 +244,8 @@ function getTotalValue(array){
 
 let playerTotal = getTotalValue(playerHand);
 let dealerTotal = getTotalValue(dealerHand);
-console.log(playerTotal);
-console.log(dealerTotal);
+// console.log(playerTotal);
+// console.log(dealerTotal);
 
 let gameWinner = 'none';
 
@@ -234,6 +270,3 @@ function selectWinner (){
     }
   }
 }
-
-selectWinner();
-console.log(gameWinner);
