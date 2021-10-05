@@ -1,0 +1,27 @@
+body {
+    text-align: center;
+    background-image: url("assets/imgs/AdobeStock_184782920.jpeg");
+}
+h1 {
+    color: white;
+}
+img {
+    margin-top: 50px;
+    height: 260px;
+    width: 200px;
+}
+#dealer-hand {
+    background-color: aqua;
+}
+#player-hand {
+    background-color: burlywood;
+}
+section {
+    min-height: 400px;
+    min-width: 300px;
+}
+input {
+    margin-right: 25px;
+    margin-left: 25px;
+    width: 100px;
+}
