@@ -141,17 +141,18 @@ let playerHandCount = 0;
 let dealerHandCount = 0;
 let playerHand = [];
 let dealerHand = [];
+let nextCard = baseDeck.pop();
 
 // deal two cards to player and dealer
 
 function dealHandInitial() {
     while (playerHandCount < 2) {
-        let nextCard = baseDeck.pop();
+        nextCard;
         playerHand.push(nextCard);
         playerHandCount++;
     }
     while (dealerHandCount < 2) {
-        let nextCard = baseDeck.pop();
+        nextCard;
         dealerHand.push(nextCard);
         dealerHandCount++;
     }
@@ -165,7 +166,7 @@ stayEl.addEventListener("click", playerStand);
 //allows player to request an additional card if not at 21
 function playerHit(event) {
     event.preventDefault();
-    let addCard = baseDeck.pop();
+    nextCard;
     playerHand.push(addCard);
     getTotalValue(playerHand);
     playerHandCount++;
@@ -174,7 +175,9 @@ function playerHit(event) {
 //function takes in event listener and kicks off auto deal to add cards
 function playerStand(event) {
     event.preventDefault();
-    let standButton = event.target;
+    if (playerStand <= 21) {
+        dealerHandCount += nextCard;
+    }
 }
 
 dealHandInitial();
