@@ -73,56 +73,56 @@ const decksPlayed = 1;
 
 for (let i = 0; i < decksPlayed; i++) {
   baseDeck.push(
-    aceClub,
-    aceDiamond,
+    aceClubs,
+    aceDiamonds,
     aceHearts,
     aceSpades,
-    twoClub ,
-    twoDiamond,
+    twoClubs,
+    twoDiamonds,
     twoHearts,
     twoSpades,
-    threeClub,
-    threeDiamond,
+    threeClubs,
+    threeDiamonds,
     threeHearts,
     threeSpades,
-    fourClub,
-    fourDiamond,
+    fourClubs,
+    fourDiamonds,
     fourHearts,
     fourSpades,
-    fiveClub,
-    fiveDiamond,
+    fiveClubs,
+    fiveDiamonds,
     fiveHearts,
     fiveSpades,
-    sixClub,
-    sixDiamond,
+    sixClubs,
+    sixDiamonds,
     sixHearts,
     sixSpades,
-    sevenClub,
-    sevenDiamond,
+    sevenClubs,
+    sevenDiamonds,
     sevenHearts,
     sevenSpades,
-    eightClub,
-    eightDiamond,
+    eightClubs,
+    eightDiamonds,
     eightHearts,
     eightSpades,
-    nineClub,
-    nineDiamond,
+    nineClubs,
+    nineDiamonds,
     nineHearts,
     nineSpades,
-    tenClub,
-    tenDiamond,
+    tenClubs,
+    tenDiamonds,
     tenHearts,
     tenSpades,
-    jackClub,
-    jackDiamond,
+    jackClubs,
+    jackDiamonds,
     jackHearts,
     jackSpades,
-    queenClub,
-    queenDiamond,
+    queenClubs,
+    queenDiamonds,
     queenHearts,
     queenSpades,
-    kingClub,
-    kingDiamond,
+    kingClubs,
+    kingDiamonds,
     kingHearts,
     kingSpades
   );
@@ -132,12 +132,12 @@ console.log(baseDeck);
 // Durstenfeld Shuffle - create randomized deck array
 
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
 }
 
 shuffleArray(baseDeck);
@@ -154,16 +154,16 @@ let nextCard = baseDeck.pop();
 // deal two cards to player and dealer
 
 function dealHandInitial() {
-    while (playerHandCount < 2) {
-        nextCard;
-        playerHand.push(nextCard);
-        playerHandCount++;
-    }
-    while (dealerHandCount < 2) {
-        nextCard;
-        dealerHand.push(nextCard);
-        dealerHandCount++;
-    }
+  while (playerHandCount < 2) {
+    nextCard;
+    playerHand.push(nextCard);
+    playerHandCount++;
+  }
+  while (dealerHandCount < 2) {
+    nextCard;
+    dealerHand.push(nextCard);
+    dealerHandCount++;
+  }
 }
 
 let stayEl = document.getElementById("stay-button");
@@ -173,19 +173,19 @@ stayEl.addEventListener("click", playerStand);
 
 //allows player to request an additional card if not at 21
 function playerHit(event) {
-    event.preventDefault();
-    nextCard;
-    playerHand.push(addCard);
-    getTotalValue(playerHand);
-    playerHandCount++;
+  event.preventDefault();
+  nextCard;
+  playerHand.push(nextCard);
+  getTotalValue(playerHand);
+  playerHandCount++;
 }
 
 //function takes in event listener and kicks off auto deal to add cards
 function playerStand(event) {
-    event.preventDefault();
-    if (playerStand <= 21) {
-        dealerHandCount += nextCard;
-    }
+  event.preventDefault();
+  if (playerStand <= 21) {
+    dealerHandCount += nextCard;
+  }
 }
 
 dealHandInitial();
@@ -194,8 +194,8 @@ console.log(playerHand);
 console.log(dealerHand);
 
 function sum(a, b) {
-    let total = a + b;
-    return total;
+  let total = a + b;
+  return total;
 }
 
 function getTotalValue(array){
