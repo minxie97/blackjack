@@ -10,7 +10,7 @@ function CardBuilder(gameValue, suit, number){
   this.gameValue = gameValue;
   this.suit = suit;
   this.number = number;
-  
+
 }
 
 let aceClub = new CardBuilder(1, 'clubs', 'ace');
@@ -67,61 +67,64 @@ let kingHearts = new CardBuilder(10, 'hearts', 'king');
 let kingSpades = new CardBuilder(10, 'spades', 'king');
 
 const baseDeck = [];
-baseDeck.push(
-  aceClub,
-  aceDiamond,
-  aceHearts,
-  aceSpades,
-  twoClub ,
-  twoDiamond,
-  twoHearts,
-  twoSpades,
-  threeClub,
-  threeDiamond,
-  threeHearts ,
-  threeSpades,
-  fourClub,
-  fourDiamond,
-  fourHearts,
-  fourSpades,
-  fiveClub,
-  fiveDiamond,
-  fiveHearts,
-  fiveSpades,
-  sixClub,
-  sixDiamond,
-  sixHearts,
-  sixSpades,
-  sevenClub,
-  sevenDiamond,
-  sevenHearts,
-  sevenSpades,
-  eightClub,
-  eightDiamond,
-  eightHearts,
-  eightSpades,
-  nineClub,
-  nineDiamond,
-  nineHearts,
-  nineSpades,
-  tenClub,
-  tenDiamond,
-  tenHearts,
-  tenSpades,
-  jackClub,
-  jackDiamond,
-  jackHearts,
-  jackSpades,
-  queenClub,
-  queenDiamond,
-  queenHearts,
-  queenSpades,
-  kingClub,
-  kingDiamond,
-  kingHearts,
-  kingSpades
-);
+const decksPlayed = 1;
 
+for (let i = 0; i < decksPlayed; i++) {
+  baseDeck.push(
+    aceClub,
+    aceDiamond,
+    aceHearts,
+    aceSpades,
+    twoClub ,
+    twoDiamond,
+    twoHearts,
+    twoSpades,
+    threeClub,
+    threeDiamond,
+    threeHearts ,
+    threeSpades,
+    fourClub,
+    fourDiamond,
+    fourHearts,
+    fourSpades,
+    fiveClub,
+    fiveDiamond,
+    fiveHearts,
+    fiveSpades,
+    sixClub,
+    sixDiamond,
+    sixHearts,
+    sixSpades,
+    sevenClub,
+    sevenDiamond,
+    sevenHearts,
+    sevenSpades,
+    eightClub,
+    eightDiamond,
+    eightHearts,
+    eightSpades,
+    nineClub,
+    nineDiamond,
+    nineHearts,
+    nineSpades,
+    tenClub,
+    tenDiamond,
+    tenHearts,
+    tenSpades,
+    jackClub,
+    jackDiamond,
+    jackHearts,
+    jackSpades,
+    queenClub,
+    queenDiamond,
+    queenHearts,
+    queenSpades,
+    kingClub,
+    kingDiamond,
+    kingHearts,
+    kingSpades
+  );
+}
 // Durstenfeld Shuffle - create randomized deck array
 
 function shuffleArray(array) {
@@ -172,11 +175,38 @@ function getTotalValue(array){
   for (let i = 2; i < array.length; i++){
     value = sum(value, array[i].gameValue);
   }
-  console.log(value);
+  return value;
 }
 
-getTotalValue(playerHand);
-getTotalValue(dealerHand);
+let playerTotal = getTotalValue(playerHand);
+let dealerTotal = getTotalValue(dealerHand);
+console.log(playerTotal);
+console.log(dealerTotal);
 
+let gameWinner = 'none';
 
+function selectWinner (){
+  if (dealerTotal === 21) {
+    if (dealerTotal > playerTotal){
+      gameWinner = 'dealer';
+    } else if (dealerTotal === playerTotal){
+      gameWinner = 'tie';
+    }
+  } else if (dealerTotal > 21) {
+    if (playerTotal <= 21) {
+      gameWinner = 'player';
+    }
+  } else if (dealerTotal < 21) {
+    if (playerTotal < 21 && playerTotal > dealerTotal) {
+      gameWinner = 'player';
+    } else if (playerTotal < 21 && playerTotal < dealerTotal) {
+      gameWinner = 'dealer';
+    } else if (playerTotal < 21 && playerTotal === dealerTotal) {
+      gameWinner = 'tie';
+    }
+  }
+}
+
+selectWinner();
+console.log(gameWinner);
 
