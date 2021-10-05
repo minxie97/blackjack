@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // let cardValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10'];
 // let suitOrder = ['club', 'diamonds', 'hearts', 'spades'];
@@ -166,10 +166,10 @@ function dealHandInitial() {
   }
 }
 
-let stayEl = document.getElementById("stay-button");
-let hitEl = document.getElementById("hit-button");
-hitEl.addEventListener("click", playerHit); //need to add card render function
-stayEl.addEventListener("click", playerStand);
+let stayEl = document.getElementById('stay-button');
+let hitEl = document.getElementById('hit-button');
+hitEl.addEventListener('click', playerHit); //need to add card render function
+stayEl.addEventListener('click', playerStand);
 
 //allows player to request an additional card if not at 21
 function playerHit(event) {
