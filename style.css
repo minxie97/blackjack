@@ -3,12 +3,27 @@ body {
     background-image: url("assets/imgs/AdobeStock_184782920.jpeg");
 }
 h1 {
+    font-size: 40px;
     color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+header {
+    background-color: chocolate;
+    margin-bottom: 0px;
+    padding-bottom: 0%;
+}
+#hand-value {
+    font-weight: bolder;
+    padding-top: 5px;
+    background-color: chartreuse;
+    height: 30px;
 }
 img {
-    margin-top: 50px;
-    height: 260px;
-    width: 200px;
+    margin-top: 30px;
+    margin-right: 20px;
+    height: 330px;
+    width: 250px;
 }
 #dealer-hand {
     background-color: aqua;
@@ -24,4 +39,7 @@ input {
     margin-right: 25px;
     margin-left: 25px;
     width: 100px;
+    height: 30px;
 }
+
+
