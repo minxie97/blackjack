@@ -6,30 +6,25 @@ h1 {
     font-size: 40px;
     color: white;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 header {
-    background-color: chocolate;
     margin-bottom: 0px;
     padding-bottom: 0%;
 }
 #hand-value {
     font-weight: bolder;
-    padding-top: 5px;
-    background-color: chartreuse;
     height: 30px;
+    color: white;
 }
 img {
-    margin-top: 30px;
+    margin-top: 20px;
     margin-right: 20px;
     height: 330px;
     width: 250px;
 }
-#dealer-hand {
-    background-color: aqua;
-}
-#player-hand {
-    background-color: burlywood;
+#player-hand-title {
+    margin-top: 20px;
 }
 section {
     min-height: 400px;
@@ -41,5 +36,7 @@ input {
     width: 100px;
     height: 30px;
 }
-
+h2 {
+    color: white;
+}
 
