@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // let cardValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10'];
 // let suitOrder = ['club', 'diamonds', 'hearts', 'spades'];
@@ -163,6 +163,7 @@ function dealerHandRender(array){
   for (let i = 0; i < array.length; i++){
     let cardEl = document.createElement('img');
     cardEl.setAttribute('src', array[i].cardImage);
+    cardEl.setAttribute('id', i);
     dealerHandEl.appendChild(cardEl);
   }
 }
@@ -176,26 +177,32 @@ function dealHandInitial() {
   }
   playerHandRender(playerHand);
   console.log(playerHand);
+
   while (dealerHandCount < 2) {
     let nextCard = baseDeck.pop();
     dealerHand.push(nextCard);
     dealerHandCount++;
   }
   dealerHandRender(dealerHand);
+  if (dealerHandCount === 2){
+    document.getElementById('0').src = 'assets/imgs/cards/vintage/BackFace/CardBackFaceBlueLargePattern.png';
+  }
+  console.log(dealerHand);
+
   getTotalValue(playerHand);
   getTotalValue(dealerHand);
   handValue(getTotalValue(playerHand));
   console.log(dealerHand);
 }
 
-let stayEl = document.getElementById("stay-button");
-let hitEl = document.getElementById("hit-button");
+let stayEl = document.getElementById('stay-button');
+let hitEl = document.getElementById('hit-button');
 hitEl.addEventListener('click', playerHit); //need to add card render function
 stayEl.addEventListener('click', playerStand);
 
 function handValue(playerTotal) {
-  let handEl = document.getElementById("hand-value");
-  handEl.innerText = "Current hand value: " + playerTotal;
+  let handEl = document.getElementById('hand-value');
+  handEl.innerText = 'Current hand value: ' + playerTotal;
 }
 
 //allows player to request an additional card if not at 21
@@ -210,11 +217,17 @@ function playerHit(event) {
   playerHandEl.innerHTML = '';
   playerHandRender(playerHand);
   handValue(playerTotal);
+  if (playerTotal >= 21) {
+    selectWinner();
+    alertWinner();
+  }
 }
 
 //function takes in event listener and kicks off auto deal to add cards
 function playerStand(event) {
   event.preventDefault();
+  document.getElementById('0').src = dealerHand[0].cardImage;
+  console.log(dealerHand[0].cardImage);
   if (playerTotal <= 21) {
     while (dealerTotal < 17) {
       let nextCard = baseDeck.pop();
@@ -223,13 +236,11 @@ function playerStand(event) {
       dealerTotal = getTotalValue(dealerHand);
       dealerHandEl.innerHTML = '';
       dealerHandRender(dealerHand);
-      selectWinner();
-      console.log(gameWinner);
     }
-  } else {
-    gameWinner = 'dealer';
-    console.log(gameWinner);
   }
+  selectWinner();
+  alertWinner();
+  console.log(gameWinner);
 }
 
 dealHandInitial();
@@ -256,29 +267,57 @@ let dealerTotal = getTotalValue(dealerHand);
 // console.log(dealerTotal);
 
 let gameWinner = 'none';
+let gameOver = false;
 
 function selectWinner (){
   if (dealerTotal === 21) {
-    if (dealerTotal > playerTotal){
-      gameWinner = 'dealer';
-    } else if (dealerTotal === playerTotal){
+    if (dealerTotal === playerTotal){
       gameWinner = 'tie';
+    } else {
+      gameWinner = 'dealer';
     }
   } else if (dealerTotal > 21) {
-    if (playerTotal <= 21) {
-      gameWinner = 'player';
-    }
+    gameWinner = 'player';
   } else if (dealerTotal < 21) {
     if (playerTotal < 21 && playerTotal > dealerTotal) {
       gameWinner = 'player';
     } else if (playerTotal < 21 && playerTotal < dealerTotal) {
       gameWinner = 'dealer';
-    } else if (playerTotal < 21 && playerTotal === dealerTotal) {
+    } else if (playerTotal < 21 && playerTotal >= 17 && playerTotal === dealerTotal) {
       gameWinner = 'tie';
+    } else if (playerTotal > 21){
+      gameWinner = 'dealer';
+    } else if (playerTotal === 21){
+      gameWinner= 'player';
+    }
+  }
+  gameOver = true;
+}
+
+function alertWinner () {
+  if (gameOver === true) {
+    if(gameWinner === 'player'){
+      alert ('You won!');
+    } else if (gameWinner === 'dealer') {
+      alert ('Better luck next time');
+    } else if (gameWinner === 'tie'){
+      alert ('A tie!');
     }
   }
 }
 
+// function changeAceValue(deck) {
+//   for (let i = 0; i < deck.length; i++) {
+//     if(deck[i].number === 'ace' && deck[i].gameValue === 11) {
+//       deck[i].gameValue = 1;
+//     }
+//   }
+// }
 
+// function reviewAceValue() {
+//   if (playerTotal > 21 && playerHand.length > 2) {
+//     changeAceValue(playerHand);
+//   }
+// }
 // Print player hand value to screen
 
