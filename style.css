@@ -66,6 +66,7 @@ h2 {
     visibility: visible;
     border: double 20px black;
     transition: all .6s ease-out;
+    background-image: url(assets/imgs/AdobeStock_94133764.jpeg);background-size: 2300px;
 }
 
 .btn {
