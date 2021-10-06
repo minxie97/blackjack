@@ -163,6 +163,7 @@ function dealerHandRender(array){
   for (let i = 0; i < array.length; i++){
     let cardEl = document.createElement('img');
     cardEl.setAttribute('src', array[i].cardImage);
+    cardEl.setAttribute('id', i);
     dealerHandEl.appendChild(cardEl);
   }
 }
@@ -176,12 +177,18 @@ function dealHandInitial() {
   }
   playerHandRender(playerHand);
   console.log(playerHand);
+
   while (dealerHandCount < 2) {
     let nextCard = baseDeck.pop();
     dealerHand.push(nextCard);
     dealerHandCount++;
   }
   dealerHandRender(dealerHand);
+  if (dealerHandCount === 2){
+    document.getElementById('0').src = 'assets/imgs/cards/vintage/BackFace/CardBackFaceBlueLargePattern.png';
+  }
+  console.log(dealerHand);
+
   getTotalValue(playerHand);
   getTotalValue(dealerHand);
   handValue(getTotalValue(playerHand));
@@ -194,8 +201,8 @@ hitEl.addEventListener('click', playerHit); //need to add card render function
 stayEl.addEventListener('click', playerStand);
 
 function handValue(playerTotal) {
-  let handEl = document.getElementById("hand-value");
-  handEl.innerText = "Current hand value: " + playerTotal;
+  let handEl = document.getElementById('hand-value');
+  handEl.innerText = 'Current hand value: ' + playerTotal;
 }
 
 //allows player to request an additional card if not at 21
@@ -210,11 +217,17 @@ function playerHit(event) {
   playerHandEl.innerHTML = '';
   playerHandRender(playerHand);
   handValue(playerTotal);
+  if (playerTotal >= 21) {
+    selectWinner();
+    alertWinner();
+  }
 }
 
 //function takes in event listener and kicks off auto deal to add cards
 function playerStand(event) {
   event.preventDefault();
+  document.getElementById('0').src = dealerHand[0].cardImage;
+  console.log(dealerHand[0].cardImage);
   if (playerTotal <= 21) {
     while (dealerTotal < 17) {
       let nextCard = baseDeck.pop();
@@ -274,6 +287,8 @@ function selectWinner (){
       gameWinner = 'tie';
     } else if (playerTotal > 21){
       gameWinner = 'dealer';
+    } else if (playerTotal === 21){
+      gameWinner= 'player';
     }
   }
   gameOver = true;
@@ -291,6 +306,18 @@ function alertWinner () {
   }
 }
 
+// function changeAceValue(deck) {
+//   for (let i = 0; i < deck.length; i++) {
+//     if(deck[i].number === 'ace' && deck[i].gameValue === 11) {
+//       deck[i].gameValue = 1;
+//     }
+//   }
+// }
 
+// function reviewAceValue() {
+//   if (playerTotal > 21 && playerHand.length > 2) {
+//     changeAceValue(playerHand);
+//   }
+// }
 // Print player hand value to screen
 
