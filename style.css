@@ -84,3 +84,21 @@ h2 {
     transform: translateY(8px);
     box-shadow: 1px 10px #666;
 }
+
+@font-face {
+    font-family: blackJack;
+    src: url(assets/fonts/BLACKJAR.TTF);
+}
+
+h2 {
+    font-size: 200px;
+    color: black;
+    font-family: blackJack;
+}
+
+h3{
+ font-size: 100px;
+    color: black;
+    font-family: blackJack;
+
+}
