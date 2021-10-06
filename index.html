@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>
@@ -16,9 +18,18 @@
 
     </header>
     <main>
+        <!-- Start of Modal -->
+        <section id="modal" class="game-modal">
+            <div class="modal-content">
+                <h2>Are you ready to play BlackJack?</h2>
+                <button id="btn-play-new-game" class="btn" onclick="startGame() "> Start Game </button>
+            </div>
+        </section>
+        <!-- End of Modal -->
+
         <section id="dealer-hand">
             <h2 id="dealer-hand-title">DEALER HAND</h2>
-         
+
         </section>
         <section id="player-hand">
             <h2 id="player-hand-title">PLAYER HAND</h2>
@@ -31,9 +42,10 @@
     <footer>
 
     </footer>
-    
+
 </body>
-<script src = "app.js"></script>
-<script src = "basedesck.js"></script>
-<script src= "gameplay.js"></script>
+<script src="app.js"></script>
+<script src="basedesck.js"></script>
+<script src="gameplay.js"></script>
+
 </html>
