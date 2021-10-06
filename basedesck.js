@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // let cardValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10'];
 // let suitOrder = ['club', 'diamonds', 'hearts', 'spades'];
@@ -188,8 +188,8 @@ function dealHandInitial() {
   console.log(dealerHand);
 }
 
-let stayEl = document.getElementById("stay-button");
-let hitEl = document.getElementById("hit-button");
+let stayEl = document.getElementById('stay-button');
+let hitEl = document.getElementById('hit-button');
 hitEl.addEventListener('click', playerHit); //need to add card render function
 stayEl.addEventListener('click', playerStand);
 
@@ -223,13 +223,11 @@ function playerStand(event) {
       dealerTotal = getTotalValue(dealerHand);
       dealerHandEl.innerHTML = '';
       dealerHandRender(dealerHand);
-      selectWinner();
-      console.log(gameWinner);
     }
-  } else {
-    gameWinner = 'dealer';
-    console.log(gameWinner);
   }
+  selectWinner();
+  alertWinner();
+  console.log(gameWinner);
 }
 
 dealHandInitial();
@@ -256,25 +254,39 @@ let dealerTotal = getTotalValue(dealerHand);
 // console.log(dealerTotal);
 
 let gameWinner = 'none';
+let gameOver = false;
 
 function selectWinner (){
   if (dealerTotal === 21) {
-    if (dealerTotal > playerTotal){
-      gameWinner = 'dealer';
-    } else if (dealerTotal === playerTotal){
+    if (dealerTotal === playerTotal){
       gameWinner = 'tie';
+    } else {
+      gameWinner = 'dealer';
     }
   } else if (dealerTotal > 21) {
-    if (playerTotal <= 21) {
-      gameWinner = 'player';
-    }
+    gameWinner = 'player';
   } else if (dealerTotal < 21) {
     if (playerTotal < 21 && playerTotal > dealerTotal) {
       gameWinner = 'player';
     } else if (playerTotal < 21 && playerTotal < dealerTotal) {
       gameWinner = 'dealer';
-    } else if (playerTotal < 21 && playerTotal === dealerTotal) {
+    } else if (playerTotal < 21 && playerTotal >= 17 && playerTotal === dealerTotal) {
       gameWinner = 'tie';
+    } else if (playerTotal > 21){
+      gameWinner = 'dealer';
+    }
+  }
+  gameOver = true;
+}
+
+function alertWinner () {
+  if (gameOver === true) {
+    if(gameWinner === 'player'){
+      alert ('You won!');
+    } else if (gameWinner === 'dealer') {
+      alert ('Better luck next time');
+    } else if (gameWinner === 'tie'){
+      alert ('A tie!');
     }
   }
 }
