@@ -7,10 +7,10 @@
 // imageRef, masterDeck
 
 function CardBuilder(gameValue, suit, number, cardImage) {
-    this.gameValue = gameValue;
-    this.suit = suit;
-    this.number = number;
-    this.cardImage = cardImage;
+  this.gameValue = gameValue;
+  this.suit = suit;
+  this.number = number;
+  this.cardImage = cardImage;
 }
 
 let aceClubs = new CardBuilder(11, 'clubs', 'ace', 'assets/imgs/cards/vintage/Clubs/Ace.png');
@@ -71,72 +71,72 @@ const baseDeck = [];
 const decksPlayed = 1;
 
 for (let i = 0; i < decksPlayed; i++) {
-    baseDeck.push(
-        aceClubs,
-        aceDiamonds,
-        aceHearts,
-        aceSpades,
-        twoClubs,
-        twoDiamonds,
-        twoHearts,
-        twoSpades,
-        threeClubs,
-        threeDiamonds,
-        threeHearts,
-        threeSpades,
-        fourClubs,
-        fourDiamonds,
-        fourHearts,
-        fourSpades,
-        fiveClubs,
-        fiveDiamonds,
-        fiveHearts,
-        fiveSpades,
-        sixClubs,
-        sixDiamonds,
-        sixHearts,
-        sixSpades,
-        sevenClubs,
-        sevenDiamonds,
-        sevenHearts,
-        sevenSpades,
-        eightClubs,
-        eightDiamonds,
-        eightHearts,
-        eightSpades,
-        nineClubs,
-        nineDiamonds,
-        nineHearts,
-        nineSpades,
-        tenClubs,
-        tenDiamonds,
-        tenHearts,
-        tenSpades,
-        jackClubs,
-        jackDiamonds,
-        jackHearts,
-        jackSpades,
-        queenClubs,
-        queenDiamonds,
-        queenHearts,
-        queenSpades,
-        kingClubs,
-        kingDiamonds,
-        kingHearts,
-        kingSpades
-    );
+  baseDeck.push(
+    aceClubs,
+    aceDiamonds,
+    aceHearts,
+    aceSpades,
+    twoClubs,
+    twoDiamonds,
+    twoHearts,
+    twoSpades,
+    threeClubs,
+    threeDiamonds,
+    threeHearts,
+    threeSpades,
+    fourClubs,
+    fourDiamonds,
+    fourHearts,
+    fourSpades,
+    fiveClubs,
+    fiveDiamonds,
+    fiveHearts,
+    fiveSpades,
+    sixClubs,
+    sixDiamonds,
+    sixHearts,
+    sixSpades,
+    sevenClubs,
+    sevenDiamonds,
+    sevenHearts,
+    sevenSpades,
+    eightClubs,
+    eightDiamonds,
+    eightHearts,
+    eightSpades,
+    nineClubs,
+    nineDiamonds,
+    nineHearts,
+    nineSpades,
+    tenClubs,
+    tenDiamonds,
+    tenHearts,
+    tenSpades,
+    jackClubs,
+    jackDiamonds,
+    jackHearts,
+    jackSpades,
+    queenClubs,
+    queenDiamonds,
+    queenHearts,
+    queenSpades,
+    kingClubs,
+    kingDiamonds,
+    kingHearts,
+    kingSpades
+  );
 }
 
 console.log(baseDeck);
 // Durstenfeld Shuffle - create randomized deck array
 
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
 }
 
 shuffleArray(baseDeck);
@@ -154,55 +154,55 @@ let dealerHandEl = document.getElementById('dealer-hand');
 
 // modal starts game
 function startGame() {
-    // let gamePlay = document.getElementById('btn-play-new-game');
-    let modal = document.getElementById('modal');
-    modal.style = 'visibility: hidden';
+  // let gamePlay = document.getElementById('btn-play-new-game');
+  let modal = document.getElementById('modal');
+  modal.style = 'visibility: hidden';
 }
 
-
 function playerHandRender(array) {
-    for (let i = 0; i < array.length; i++) {
-        let cardEl = document.createElement('img');
-        cardEl.setAttribute('src', array[i].cardImage);
-        playerHandEl.appendChild(cardEl);
-    }
+  console.log('render first');
+  for (let i = 0; i < array.length; i++) {
+    let cardEl = document.createElement('img');
+    cardEl.setAttribute('src', array[i].cardImage);
+    playerHandEl.appendChild(cardEl);
+  }
 }
 
 function dealerHandRender(array) {
-    for (let i = 0; i < array.length; i++) {
-        let cardEl = document.createElement('img');
-        cardEl.setAttribute('src', array[i].cardImage);
-        cardEl.setAttribute('id', i);
-        dealerHandEl.appendChild(cardEl);
-    }
+  for (let i = 0; i < array.length; i++) {
+    let cardEl = document.createElement('img');
+    cardEl.setAttribute('src', array[i].cardImage);
+    cardEl.setAttribute('id', i);
+    dealerHandEl.appendChild(cardEl);
+  }
 }
 
 
 function dealHandInitial() {
-    while (playerHandCount < 2) {
-        let nextCard = baseDeck.pop();
-        playerHand.push(nextCard);
-        playerHandCount++;
-    }
-    playerHandRender(playerHand);
-    console.log(playerHand);
+  while (playerHandCount < 2) {
+    let nextCard = baseDeck.pop();
+    playerHand.push(nextCard);
+    playerHandCount++;
+  }
+  playerHandRender(playerHand);
+  console.log(playerHand);
 
-    while (dealerHandCount < 2) {
-        let nextCard = baseDeck.pop();
-        dealerHand.push(nextCard);
-        dealerHandCount++;
-    }
-    dealerHandRender(dealerHand);
-    if (dealerHandCount === 2) {
-        document.getElementById('0').src = 'assets/imgs/cards/vintage/BackFace/CardBackFaceBlueLargePattern.png';
-    }
-    console.log(dealerHand);
+  while (dealerHandCount < 2) {
+    let nextCard = baseDeck.pop();
+    dealerHand.push(nextCard);
+    dealerHandCount++;
+  }
+  dealerHandRender(dealerHand);
+  if (dealerHandCount === 2) {
+    document.getElementById('0').src = 'assets/imgs/cards/vintage/BackFace/CardBackFaceBlueLargePattern.png';
+  }
 
-    getTotalValue(playerHand);
-    getTotalValue(dealerHand);
-    handValue(getTotalValue(playerHand));
-    console.log(dealerHand);
+  getTotalValue(playerHand);
+  getTotalValue(dealerHand);
+  handValue(getTotalValue(playerHand));
+  console.log(dealerHand);
 }
+dealHandInitial();
 
 let stayEl = document.getElementById('stay-button');
 let hitEl = document.getElementById('hit-button');
@@ -210,64 +210,81 @@ hitEl.addEventListener('click', playerHit); //need to add card render function
 stayEl.addEventListener('click', playerStand);
 
 function handValue(playerTotal) {
-    let handEl = document.getElementById('hand-value');
-    handEl.innerText = 'Current hand value: ' + playerTotal;
+  let handEl = document.getElementById('hand-value');
+  handEl.innerText = 'Current hand value: ' + playerTotal;
 }
 
 //allows player to request an additional card if not at 21
 function playerHit(event) {
-    event.preventDefault();
-    let nextCard = baseDeck.pop();
-    playerHand.push(nextCard);
-    playerHandCount++;
-    console.log(playerHand);
+  event.preventDefault();
+  if (playerTotal < 21) {
+    addCardPlayer();
+    // draw.next();
     playerTotal = getTotalValue(playerHand);
     console.log(playerTotal);
     playerHandEl.innerHTML = '';
-    playerHandRender(playerHand);
     handValue(playerTotal);
-    if (playerTotal >= 21) {
-        selectWinner();
-        alertWinner();
+  }
+  playerHandRender(playerHand);
+  setTimeout(function(){
+    if (playerTotal >= 21){
+      selectWinner();
+      alertWinner();
     }
+  }, 1000);
 }
 
+function addCardPlayer () {
+  let nextCard = baseDeck.pop();
+  playerHand.push(nextCard);
+  playerHandCount++;
+  return playerHand;
+}
+
+// function checkHand () {
+//   console.log('check first');
+//   if (playerTotal >= 21){
+//     selectWinner();
+//     // console.log(winner);
+//     alertWinner();
+//   }
+// }
 //function takes in event listener and kicks off auto deal to add cards
 function playerStand(event) {
-    event.preventDefault();
-    document.getElementById('0').src = dealerHand[0].cardImage;
-    console.log(dealerHand[0].cardImage);
-    if (playerTotal <= 21) {
-        while (dealerTotal < 17) {
-            let nextCard = baseDeck.pop();
-            dealerHand.push(nextCard);
-            dealerHandCount++;
-            dealerTotal = getTotalValue(dealerHand);
-            dealerHandEl.innerHTML = '';
-            dealerHandRender(dealerHand);
-        }
+  event.preventDefault();
+  document.getElementById('0').src = dealerHand[0].cardImage;
+  console.log(dealerHand[0].cardImage);
+  if (playerTotal <= 21) {
+    while (dealerTotal < 17) {
+      let nextCard = baseDeck.pop();
+      dealerHand.push(nextCard);
+      dealerHandCount++;
+      dealerTotal = getTotalValue(dealerHand);
+      dealerHandEl.innerHTML = '';
+      dealerHandRender(dealerHand);
     }
-    selectWinner();
-    alertWinner();
-    console.log(gameWinner);
+    setTimeout(function(){
+      selectWinner();
+      alertWinner();
+    }, 1000);
+  }
 }
 
-dealHandInitial();
 // playerHit();
 // console.log(playerHand);
 // console.log(dealerHand);
 
 function sum(a, b) {
-    let total = a + b;
-    return total;
+  let total = a + b;
+  return total;
 }
 
 function getTotalValue(array) {
-    let value = sum(array[0].gameValue, array[1].gameValue);
-    for (let i = 2; i < array.length; i++) {
-        value = sum(value, array[i].gameValue);
-    }
-    return value;
+  let value = sum(array[0].gameValue, array[1].gameValue);
+  for (let i = 2; i < array.length; i++) {
+    value = sum(value, array[i].gameValue);
+  }
+  return value;
 }
 
 let playerTotal = getTotalValue(playerHand);
@@ -279,40 +296,45 @@ let gameWinner = 'none';
 let gameOver = false;
 
 function selectWinner() {
-    if (dealerTotal === 21) {
-        if (dealerTotal === playerTotal) {
-            gameWinner = 'tie';
-        } else {
-            gameWinner = 'dealer';
-        }
-    } else if (dealerTotal > 21) {
-        gameWinner = 'player';
-    } else if (dealerTotal < 21) {
-        if (playerTotal < 21 && playerTotal > dealerTotal) {
-            gameWinner = 'player';
-        } else if (playerTotal < 21 && playerTotal < dealerTotal) {
-            gameWinner = 'dealer';
-        } else if (playerTotal < 21 && playerTotal >= 17 && playerTotal === dealerTotal) {
-            gameWinner = 'tie';
-        } else if (playerTotal > 21) {
-            gameWinner = 'dealer';
-        } else if (playerTotal === 21) {
-            gameWinner = 'player';
-        }
+  if (dealerTotal === 21) {
+    if (dealerTotal === playerTotal) {
+      gameWinner = 'tie';
+    } else {
+      gameWinner = 'dealer';
     }
-    gameOver = true;
+  } else if (dealerTotal > 21) {
+    gameWinner = 'player';
+  } else if (dealerTotal < 21) {
+    if (playerTotal < 21 && playerTotal > dealerTotal) {
+      gameWinner = 'player';
+    } else if (playerTotal < 21 && playerTotal < dealerTotal) {
+      gameWinner = 'dealer';
+    } else if (playerTotal < 21 && playerTotal >= 17 && playerTotal === dealerTotal) {
+      gameWinner = 'tie';
+    } else if (playerTotal > 21) {
+      gameWinner = 'dealer';
+    } else if (playerTotal === 21) {
+      gameWinner = 'player';
+    }
+  }
+  gameOver = true;
 }
 
+let testEl = document.getElementById('test');
+
 function alertWinner() {
-    if (gameOver === true) {
-        if (gameWinner === 'player') {
-            alert('You won!');
-        } else if (gameWinner === 'dealer') {
-            alert('Better luck next time');
-        } else if (gameWinner === 'tie') {
-            alert('A tie!');
-        }
+  if (gameOver === true) {
+    if (gameWinner === 'player') {
+      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
+      alert('u win');
+    } else if (gameWinner === 'dealer') {
+      alert('Better luck next time');
+      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
+    } else if (gameWinner === 'tie') {
+      alert('A tie!');
+      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
     }
+  }
 }
 
 // function changeAceValue(deck) {
