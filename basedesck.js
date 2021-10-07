@@ -223,14 +223,16 @@ function playerHit(event) {
     playerTotal = getTotalValue(playerHand);
     playerHandEl.innerHTML = '';
     handValue(playerTotal);
-  }
-  playerHandRender(playerHand);
-  setTimeout(function(){
-    if (playerTotal >= 21){
+    if(playerTotal > 21){
       selectWinner();
-      alertWinner();
+      setTimeout(function(){
+        if (playerTotal >= 21){
+          alertWinner();
+        }
+      }, 1000);
     }
-  }, 1000);
+    playerHandRender(playerHand);
+  }
 }
 
 function addCardPlayer () {
@@ -253,8 +255,8 @@ function playerStand(event) {
       dealerHandEl.innerHTML = '';
       dealerHandRender(dealerHand);
     }
+    selectWinner();
     setTimeout(function(){
-      selectWinner();
       alertWinner();
     }, 1000);
   }
