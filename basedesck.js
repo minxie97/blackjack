@@ -141,7 +141,6 @@ function shuffleArray(array) {
 }
 
 shuffleArray(baseDeck);
-
 // hand variables
 
 let playerHandCount = 0;
@@ -224,6 +223,7 @@ function playerHit(event) {
     playerHandEl.innerHTML = '';
     handValue(playerTotal);
     if(playerTotal > 21){
+      document.getElementById('0').src = dealerHand[0].cardImage;
       selectWinner();
       setTimeout(function(){
         if (playerTotal >= 21){
@@ -247,7 +247,7 @@ function playerStand(event) {
   event.preventDefault();
   document.getElementById('0').src = dealerHand[0].cardImage;
   if (playerTotal <= 21) {
-    while (dealerTotal < 17) {
+    while (dealerTotal < 17 && dealerTotal <= playerTotal) {
       let nextCard = baseDeck.pop();
       dealerHand.push(nextCard);
       dealerHandCount++;
@@ -277,8 +277,6 @@ function getTotalValue(array) {
 
 playerTotal = getTotalValue(playerHand);
 dealerTotal = getTotalValue(dealerHand);
-// console.log(playerTotal);
-// console.log(dealerTotal);
 
 let gameWinner = 'none';
 let gameOver = false;
@@ -360,8 +358,7 @@ function restartGame() {
   }
   fillDeck();
   shuffleArray(baseDeck);
-  console.log(playerTotal);
-  console.log(dealerTotal);
+
   dealHandInitial();
 }
 
