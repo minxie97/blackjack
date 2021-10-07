@@ -67,66 +67,67 @@ let kingHearts = new CardBuilder(10, 'hearts', 'king', 'assets/imgs/cards/vintag
 let kingSpades = new CardBuilder(10, 'spades', 'king', 'assets/imgs/cards/vintage/Spades/King.png');
 
 
-const baseDeck = [];
+let baseDeck = [];
 const decksPlayed = 1;
-
-for (let i = 0; i < decksPlayed; i++) {
-  baseDeck.push(
-    aceClubs,
-    aceDiamonds,
-    aceHearts,
-    aceSpades,
-    twoClubs,
-    twoDiamonds,
-    twoHearts,
-    twoSpades,
-    threeClubs,
-    threeDiamonds,
-    threeHearts,
-    threeSpades,
-    fourClubs,
-    fourDiamonds,
-    fourHearts,
-    fourSpades,
-    fiveClubs,
-    fiveDiamonds,
-    fiveHearts,
-    fiveSpades,
-    sixClubs,
-    sixDiamonds,
-    sixHearts,
-    sixSpades,
-    sevenClubs,
-    sevenDiamonds,
-    sevenHearts,
-    sevenSpades,
-    eightClubs,
-    eightDiamonds,
-    eightHearts,
-    eightSpades,
-    nineClubs,
-    nineDiamonds,
-    nineHearts,
-    nineSpades,
-    tenClubs,
-    tenDiamonds,
-    tenHearts,
-    tenSpades,
-    jackClubs,
-    jackDiamonds,
-    jackHearts,
-    jackSpades,
-    queenClubs,
-    queenDiamonds,
-    queenHearts,
-    queenSpades,
-    kingClubs,
-    kingDiamonds,
-    kingHearts,
-    kingSpades
-  );
+fillDeck();
+function fillDeck() {
+  for (let i = 0; i < decksPlayed; i++) {
+    baseDeck.push(
+      aceClubs,
+      aceDiamonds,
+      aceHearts,
+      aceSpades,
+      twoClubs,
+      twoDiamonds,
+      twoHearts,
+      twoSpades,
+      threeClubs,
+      threeDiamonds,
+      threeHearts,
+      threeSpades,
+      fourClubs,
+      fourDiamonds,
+      fourHearts,
+      fourSpades,
+      fiveClubs,
+      fiveDiamonds,
+      fiveHearts,
+      fiveSpades,
+      sixClubs,
+      sixDiamonds,
+      sixHearts,
+      sixSpades,
+      sevenClubs,
+      sevenDiamonds,
+      sevenHearts,
+      sevenSpades,
+      eightClubs,
+      eightDiamonds,
+      eightHearts,
+      eightSpades,
+      nineClubs,
+      nineDiamonds,
+      nineHearts,
+      nineSpades,
+      tenClubs,
+      tenDiamonds,
+      tenHearts,
+      tenSpades,
+      jackClubs,
+      jackDiamonds,
+      jackHearts,
+      jackSpades,
+      queenClubs,
+      queenDiamonds,
+      queenHearts,
+      queenSpades,
+      kingClubs,
+      kingDiamonds,
+      kingHearts,
+      kingSpades
+    );
+  }
 }
-
 console.log(baseDeck);
 // Durstenfeld Shuffle - create randomized deck array
 
@@ -176,7 +177,6 @@ function dealerHandRender(array) {
     dealerHandEl.appendChild(cardEl);
   }
 }
-
 
 function dealHandInitial() {
   while (playerHandCount < 2) {
@@ -325,14 +325,14 @@ let testEl = document.getElementById('test');
 function alertWinner() {
   if (gameOver === true) {
     if (gameWinner === 'player') {
-      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
       alert('u win');
+      restartGame();
     } else if (gameWinner === 'dealer') {
       alert('Better luck next time');
-      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
+      restartGame();
     } else if (gameWinner === 'tie') {
       alert('A tie!');
-      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
+      restartGame();
     }
   }
 }
@@ -348,6 +348,27 @@ function alertWinner() {
 // function reviewAceValue() {
 //   if (playerTotal > 21 && playerHand.length > 2) {
 //     changeAceValue(playerHand);
-//   }
-// }
-// Print player hand value to screen
+
+// Restart game
+function restartGame() {
+  let playerHandEl = document.getElementById('player-hand');
+  let dealerHandEl = document.getElementById('dealer-hand');
+  let r = confirm('Want to play again?');
+  baseDeck = [];
+  if (r === true) {
+    playerHandEl.innerHTML = '';
+    dealerHandEl.innerHTML = '';
+  }
+  fillDeck();
+  playerHand = [];
+  dealerHand = [];
+  playerHandCount = 0;
+  dealerHandCount = 0;
+  shuffleArray(baseDeck);
+  console.log(baseDeck);
+  console.log(playerHand);
+  console.log(dealerHand);
+  setTimeout(function(){
+    dealHandInitial();
+  }, 1000);
+}
