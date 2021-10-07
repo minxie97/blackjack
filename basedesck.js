@@ -203,6 +203,7 @@ function dealHandInitial() {
   console.log(dealerHand);
 }
 dealHandInitial();
+// reviewAceValue();
 
 let stayEl = document.getElementById('stay-button');
 let hitEl = document.getElementById('hit-button');
@@ -225,6 +226,7 @@ function playerHit(event) {
     playerHandEl.innerHTML = '';
     handValue(playerTotal);
   }
+  // reviewAceValue();
   playerHandRender(playerHand);
   setTimeout(function(){
     if (playerTotal >= 21){
@@ -320,19 +322,15 @@ function selectWinner() {
   gameOver = true;
 }
 
-let testEl = document.getElementById('test');
 
 function alertWinner() {
   if (gameOver === true) {
     if (gameWinner === 'player') {
-      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
       alert('u win');
     } else if (gameWinner === 'dealer') {
       alert('Better luck next time');
-      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
     } else if (gameWinner === 'tie') {
       alert('A tie!');
-      testEl.innerText = 'aksdjflkjsadfjklasdfhkas';
     }
   }
 }
