@@ -1,6 +1,7 @@
 body {
     text-align: center;
     background-image: url("assets/imgs/AdobeStock_184782920.jpeg");
+    max-height: 100vw;
 }
 
 h1 {
@@ -22,18 +23,18 @@ header {
 }
 
 img {
-    margin-top: 20px;
+    margin-top: 12px;
     margin-right: 20px;
     height: 330px;
     width: 250px;
 }
 
 #player-hand-title {
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 section {
-    min-height: 400px;
+    min-height: 370px;
     min-width: 300px;
 }
 
@@ -44,7 +45,7 @@ input {
     height: 30px;
 }
 
-h2 {
+h4 {
     color: white;
 }
 
