@@ -197,10 +197,11 @@ function dealHandInitial() {
     document.getElementById('0').src = 'assets/imgs/cards/vintage/BackFace/CardBackFaceBlueLargePattern.png';
   }
 
-  getTotalValue(playerHand);
-  getTotalValue(dealerHand);
+  playerTotal = getTotalValue(playerHand);
+  dealerTotal = getTotalValue(dealerHand);
   handValue(getTotalValue(playerHand));
 }
+
 dealHandInitial();
 
 let stayEl = document.getElementById('stay-button');
@@ -312,7 +313,6 @@ function alertWinner() {
       restartGame();
     } else if (gameWinner === 'dealer') {
       alert('Better luck next time');
-
       restartGame();
     } else if (gameWinner === 'tie') {
       alert('A tie!');
@@ -349,18 +349,17 @@ function restartGame() {
   if (r === true) {
     playerHandEl.innerHTML = '';
     dealerHandEl.innerHTML = '';
+    playerHand = [];
+    dealerHand = [];
+    playerHandCount = 0;
+    dealerHandCount = 0;
+    playerTotal = 0;
+    dealerTotal = 0;
   }
   fillDeck();
-  playerHand = [];
-  dealerHand = [];
-  playerHandCount = 0;
-  dealerHandCount = 0;
   shuffleArray(baseDeck);
-  console.log(baseDeck);
-  console.log(playerHand);
-  console.log(dealerHand);
-  setTimeout(function(){
-    dealHandInitial();
-  }, 1000);
+  console.log(playerTotal);
+  console.log(dealerTotal);
+  dealHandInitial();
 }
 
