@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict';
 
 // let cardValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10'];
@@ -128,7 +129,6 @@ function fillDeck() {
     );
   }
 }
-console.log(baseDeck);
 // Durstenfeld Shuffle - create randomized deck array
 
 function shuffleArray(array) {
@@ -141,7 +141,6 @@ function shuffleArray(array) {
 }
 
 shuffleArray(baseDeck);
-console.log(baseDeck);
 
 // hand variables
 
@@ -149,6 +148,8 @@ let playerHandCount = 0;
 let dealerHandCount = 0;
 let playerHand = [];
 let dealerHand = [];
+let playerTotal = 0;
+let dealerTotal = 0;
 
 let playerHandEl = document.getElementById('player-hand');
 let dealerHandEl = document.getElementById('dealer-hand');
@@ -161,7 +162,6 @@ function startGame() {
 }
 
 function playerHandRender(array) {
-  console.log('render first');
   for (let i = 0; i < array.length; i++) {
     let cardEl = document.createElement('img');
     cardEl.setAttribute('src', array[i].cardImage);
@@ -185,7 +185,6 @@ function dealHandInitial() {
     playerHandCount++;
   }
   playerHandRender(playerHand);
-  console.log(playerHand);
 
   while (dealerHandCount < 2) {
     let nextCard = baseDeck.pop();
@@ -193,6 +192,7 @@ function dealHandInitial() {
     dealerHandCount++;
   }
   dealerHandRender(dealerHand);
+
   if (dealerHandCount === 2) {
     document.getElementById('0').src = 'assets/imgs/cards/vintage/BackFace/CardBackFaceBlueLargePattern.png';
   }
@@ -200,10 +200,8 @@ function dealHandInitial() {
   getTotalValue(playerHand);
   getTotalValue(dealerHand);
   handValue(getTotalValue(playerHand));
-  console.log(dealerHand);
 }
 dealHandInitial();
-// reviewAceValue();
 
 let stayEl = document.getElementById('stay-button');
 let hitEl = document.getElementById('hit-button');
@@ -222,11 +220,9 @@ function playerHit(event) {
     addCardPlayer();
     // draw.next();
     playerTotal = getTotalValue(playerHand);
-    console.log(playerTotal);
     playerHandEl.innerHTML = '';
     handValue(playerTotal);
   }
-  // reviewAceValue();
   playerHandRender(playerHand);
   setTimeout(function(){
     if (playerTotal >= 21){
@@ -243,19 +239,10 @@ function addCardPlayer () {
   return playerHand;
 }
 
-// function checkHand () {
-//   console.log('check first');
-//   if (playerTotal >= 21){
-//     selectWinner();
-//     // console.log(winner);
-//     alertWinner();
-//   }
-// }
 //function takes in event listener and kicks off auto deal to add cards
 function playerStand(event) {
   event.preventDefault();
   document.getElementById('0').src = dealerHand[0].cardImage;
-  console.log(dealerHand[0].cardImage);
   if (playerTotal <= 21) {
     while (dealerTotal < 17) {
       let nextCard = baseDeck.pop();
@@ -272,10 +259,6 @@ function playerStand(event) {
   }
 }
 
-// playerHit();
-// console.log(playerHand);
-// console.log(dealerHand);
-
 function sum(a, b) {
   let total = a + b;
   return total;
@@ -289,8 +272,8 @@ function getTotalValue(array) {
   return value;
 }
 
-let playerTotal = getTotalValue(playerHand);
-let dealerTotal = getTotalValue(dealerHand);
+playerTotal = getTotalValue(playerHand);
+dealerTotal = getTotalValue(dealerHand);
 // console.log(playerTotal);
 // console.log(dealerTotal);
 
@@ -322,7 +305,6 @@ function selectWinner() {
   gameOver = true;
 }
 
-
 function alertWinner() {
   if (gameOver === true) {
     if (gameWinner === 'player') {
@@ -339,19 +321,26 @@ function alertWinner() {
   }
 }
 
-// function changeAceValue(deck) {
-//   for (let i = 0; i < deck.length; i++) {
-//     if(deck[i].number === 'ace' && deck[i].gameValue === 11) {
-//       deck[i].gameValue = 1;
-//     }
-//   }
-// }
+function changeAceValue(deck) {
+  for (let i = 0; i < deck.length; i++) {
+    if(deck[i].number === 'ace' && deck[i].gameValue === 11) {
+      deck[i].gameValue = 1;
+    }
+  }
+}
 
-// function reviewAceValue() {
-//   if (playerTotal > 21 && playerHand.length > 2) {
-//     changeAceValue(playerHand);
+function reviewAceValue() {
+  if (playerTotal > 21 && playerHand.length >= 2) {
+    changeAceValue(playerHand);
+  }
+}
 
-// Restart game
+function reviewAceValueDealer () {
+  if (dealerTotal > 21 && dealerHand.length >= 2) {
+    changeAceValue(dealerHand);
+  }
+}
+
 function restartGame() {
   let playerHandEl = document.getElementById('player-hand');
   let dealerHandEl = document.getElementById('dealer-hand');
@@ -374,3 +363,4 @@ function restartGame() {
     dealHandInitial();
   }, 1000);
 }
+
