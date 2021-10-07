@@ -11,12 +11,13 @@ body {
     color: white;
     margin-top: 30px;
     margin-bottom: 30px;
-    animation: pulsate 0.65s ease-in-out infinite alternate;
+    animation: pulsate 0.22s ease-in-out infinite alternate;
 }
 
 .neonText {
     color: #fff;
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px, 0 0 42px #5271ff, 0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+    animation: pulsate 0.22s ease-in-out infinite alternate;
 }
 
 header {
@@ -92,7 +93,7 @@ h4 {
     border-color: rgb(58, 58, 58);
     background-color: black;
     color: #fff;
-    font-size: 6em;
+    font-size: 4em;
     box-shadow: 18px 12px 45px rgb(37, 37, 37);
     cursor: pointer;
 }
@@ -124,7 +125,7 @@ h3 {
     font-size: 1.5em;
     width: 80px;
     height: 55px;
-    box-shadow: 8px 12px 16px 0 rgba(0,2,2,2);
+    box-shadow: 8px 12px 16px 0 rgba(0, 2, 2, 2);
     background-image: url(assets/imgs/cards/vintage/Hearts/Ace.png);
     background-position: center;
     background-size: 225%;
@@ -133,13 +134,12 @@ h3 {
     color: white;
 }
 
-
 #stay-button {
     border-radius: 5%;
     font-size: 1.5em;
     width: 80px;
     height: 55px;
-    box-shadow: 8px 12px 16px 0 rgba(0,2,2,2);
+    box-shadow: 8px 12px 16px 0 rgba(0, 2, 2, 2);
     background-image: url(assets/imgs/cards/vintage/Spades/Ace.png);
     background-position: center;
     background-size: 125%;
