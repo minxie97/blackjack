@@ -7,9 +7,16 @@ body {
 
 #header {
     font-size: 40px;
+    font-family: blackjack;
     color: white;
     margin-top: 30px;
     margin-bottom: 30px;
+    animation: pulsate 0.65s ease-in-out infinite alternate;
+}
+
+.neonText {
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px, 0 0 42px #5271ff, 0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
 }
 
 header {
@@ -32,6 +39,13 @@ img {
 
 #player-hand-title {
     margin-top: 0px;
+    font-family: blackjack;
+    font-size: 18px;
+}
+
+#dealer-hand-title {
+    font-family: blackjack;
+    font-size: 18px;
 }
 
 section {
@@ -57,12 +71,10 @@ h4 {
     border-radius: 5px;
     position: absolute;
     display: flex;
+    top: 0;
     height: 100vh;
     width: 100vw;
     background: #fff;
-    /* display: flex; */
-    /* top: 118px;
-    left: 400px; */
     align-items: center;
     justify-content: center;
     visibility: visible;
@@ -119,4 +131,13 @@ h3 {
     font-size: 1.5em;
     width: 80px;
     height: 55px;
+}
+
+@keyframes pulsate {
+    100% {
+        text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #5271ff, 0 0 80px #5271ff, 0 0 90px #5271ff, 0 0 100px #5271ff, 0 0 150px #5271ff;
+    }
+    0% {
+        text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #5271ff, 0 0 73px #5271ff, 0 0 80px #5271ff, 0 0 94px #5271ff, 0 0 140px #5271ff;
+    }
 }
