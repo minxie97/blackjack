@@ -311,13 +311,13 @@ function selectWinner() {
 function alertWinner() {
   if (gameOver === true) {
     if (gameWinner === 'player') {
-      alert('u win');
+      alert('You win! Dealer hand value was ' + getTotalValue(dealerHand));
       restartGame();
     } else if (gameWinner === 'dealer') {
-      alert('Better luck next time');
+      alert('Better luck next time! Dealer hand value was ' + getTotalValue(dealerHand));
       restartGame();
     } else if (gameWinner === 'tie') {
-      alert('A tie!');
+      alert('A tie! Dealer hand value was ' + getTotalValue(dealerHand));
       restartGame();
     }
   }
