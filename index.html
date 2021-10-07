@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jack Black's BlackJack</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
-        <h1>
-            BLACKJACK
+        <h1 id="header" class="neonText">
+            Jack Black's Blackjack
         </h1>
-        <div id="hand-value"></div>
 
     </header>
     <main>
-        <section id="dealer-hand">
-            
+        <!-- Start of Modal -->
+        <section id="modal" class="game-modal">
+            <div class="modal-content">
+
+                <br>
+                <h3 class="neonText">Let's Play</h3>
+                <br>
+                <br>
+                <h3 class="neonText">BlackJack</h3>
+                <br>
+                <br>
+                <button id="btn-play-new-game" class="btn" onclick="startGame() "> Start Game </button>
+            </div>
         </section>
+        <!-- End of Modal -->
+        <h4 id="dealer-hand-title">DEALER HAND</h4>
+        <section id="dealer-hand">
+
+        </section>
+        <h4 id="player-hand-title">PLAYER HAND</h4>
         <section id="player-hand">
 
         </section>
+        <div id="hand-value"></div>
         <input type="button" id="hit-button" value="Hit" />
         <input type="button" id="stay-button" value="Stay" />
     </main>
     <footer>
-
     </footer>
-    
+
 </body>
-<script src = "app.js"></script>
-<script src = "basedesck.js"></script>
-<script src= "gameplay.js"></script>
+<script src="app.js"></script>
 </html>

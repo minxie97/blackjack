@@ -1,40 +1,64 @@
 body {
     text-align: center;
     background-image: url("assets/imgs/AdobeStock_184782920.jpeg");
+    max-height: 100%;
+    overflow: hidden;
 }
-h1 {
+
+#header {
     font-size: 40px;
+    font-family: blackjack;
     color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    animation: pulsate 0.22s ease-in-out infinite alternate;
 }
+
+.neonText {
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px, 0 0 42px #5271ff, 0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+    animation: pulsate 0.22s ease-in-out infinite alternate;
+}
+
 header {
-    background-color: chocolate;
     margin-bottom: 0px;
     padding-bottom: 0%;
 }
+
 #hand-value {
     font-weight: bolder;
-    padding-top: 5px;
-    background-color: chartreuse;
     height: 30px;
+    color: white;
 }
+
 img {
-    margin-top: 30px;
+    margin-top: 12px;
     margin-right: 20px;
     height: 330px;
     width: 250px;
+    border-radius: 22px;
+    border: thin solid rgb(82, 82, 82);
+    box-shadow: 11px 15px 20px 8px rgba(0, 0, 0, .84);
+    -webkit-box-shadow: 11px 15px 20px 8px rgba(0, 0, 0, .84);
+    -moz-box-shadow: 11px 15px 20px 8px rgba(0, 0, 0, .84);
 }
-#dealer-hand {
-    background-color: aqua;
+
+#player-hand-title {
+    margin-top: 0px;
+    font-family: blackjack;
+    font-size: 18px;
 }
-#player-hand {
-    background-color: burlywood;
+
+#dealer-hand-title {
+    font-family: blackjack;
+    font-size: 18px;
 }
+
 section {
-    min-height: 400px;
+    min-height: 370px;
     min-width: 300px;
 }
+
 input {
     margin-right: 25px;
     margin-left: 25px;
@@ -42,4 +66,98 @@ input {
     height: 30px;
 }
 
+h4 {
+    color: white;
+}
 
+
+/* Modal Style */
+
+#modal {
+    border-radius: 5px;
+    position: absolute;
+    display: flex;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    border: solid 10px black;
+    transition: all .6s ease-out;
+    background-image: url(assets/imgs/AdobeStock_94133764.jpeg);
+    background-size: 125%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+
+.btn {
+    border-radius: 20px;
+    border-width: 9px;
+    border-color: black;
+    background-color: black;
+    color: #fff;
+    font-size: 3em;
+    box-shadow: 18px 12px 45px rgb(37, 37, 37);
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: translateY(8px);
+    box-shadow: 1px 10px #666;
+}
+
+@font-face {
+    font-family: blackJack;
+    src: url(assets/fonts/BLACKJAR.TTF);
+}
+
+h2 {
+    font-size: 200px;
+    color: black;
+    font-family: blackJack;
+}
+
+h3 {
+    font-size: 100px;
+    color: black;
+    font-family: blackJack;
+}
+
+#hit-button {
+    border-radius: 5%;
+    font-size: 1.5em;
+    width: 80px;
+    height: 55px;
+    box-shadow: 8px 12px 16px 0 rgba(0, 2, 2, 2);
+    background-image: url(assets/imgs/cards/vintage/Hearts/Ace.png);
+    background-position: center;
+    background-size: 225%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    color: white;
+}
+
+#stay-button {
+    border-radius: 5%;
+    font-size: 1.5em;
+    width: 80px;
+    height: 55px;
+    box-shadow: 8px 12px 16px 0 rgba(0, 2, 2, 2);
+    background-image: url(assets/imgs/cards/vintage/Spades/Ace.png);
+    background-position: center;
+    background-size: 125%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    color: white;
+}
+
+@keyframes pulsate {
+    100% {
+        text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #5271ff, 0 0 80px #5271ff, 0 0 90px #5271ff, 0 0 100px #5271ff, 0 0 150px #5271ff;
+    }
+    0% {
+        text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #5271ff, 0 0 73px #5271ff, 0 0 80px #5271ff, 0 0 94px #5271ff, 0 0 140px #5271ff;
+    }
+}
