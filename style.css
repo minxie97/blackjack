@@ -1,13 +1,23 @@
 body {
     text-align: center;
     background-image: url("assets/imgs/AdobeStock_184782920.jpeg");
+    max-height: 100%;
+    overflow: hidden;
 }
 
-h1 {
+#header {
     font-size: 40px;
+    font-family: blackjack;
     color: white;
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 30px;
+    animation: pulsate 0.22s ease-in-out infinite alternate;
+}
+
+.neonText {
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px, 0 0 42px #5271ff, 0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+    animation: pulsate 0.22s ease-in-out infinite alternate;
 }
 
 header {
@@ -30,6 +40,13 @@ img {
 
 #player-hand-title {
     margin-top: 0px;
+    font-family: blackjack;
+    font-size: 18px;
+}
+
+#dealer-hand-title {
+    font-family: blackjack;
+    font-size: 18px;
 }
 
 section {
@@ -52,21 +69,22 @@ h4 {
 /* Modal Style */
 
 #modal {
-    border-radius: 10%;
+    border-radius: 5px;
     position: absolute;
     display: flex;
+    top: 0;
     height: 100vh;
     width: 100vw;
     background: #fff;
-    /* display: flex; */
-    /* top: 118px;
-    left: 400px; */
     align-items: center;
     justify-content: center;
     visibility: visible;
-    border: double 20px black;
+    border: solid 10px black;
     transition: all .6s ease-out;
-    background-image: url(assets/imgs/AdobeStock_94133764.jpeg);background-size: 2300px;
+    background-image: url(assets/imgs/AdobeStock_94133764.jpeg);
+    background-size: 125%;
+    background-repeat: no-repeat;
+    object-fit: cover;
 }
 
 .btn {
@@ -75,8 +93,8 @@ h4 {
     border-color: rgb(58, 58, 58);
     background-color: black;
     color: #fff;
-    font-size: 6em;
-    box-shadow: 18px 15px 10px rgb(167, 165, 165);
+    font-size: 4em;
+    box-shadow: 18px 12px 45px rgb(37, 37, 37);
     cursor: pointer;
 }
 
@@ -96,9 +114,45 @@ h2 {
     font-family: blackJack;
 }
 
-h3{
- font-size: 100px;
+h3 {
+    font-size: 100px;
     color: black;
     font-family: blackJack;
+}
 
+#hit-button {
+    border-radius: 5%;
+    font-size: 1.5em;
+    width: 80px;
+    height: 55px;
+    box-shadow: 8px 12px 16px 0 rgba(0, 2, 2, 2);
+    background-image: url(assets/imgs/cards/vintage/Hearts/Ace.png);
+    background-position: center;
+    background-size: 225%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    color: white;
+}
+
+#stay-button {
+    border-radius: 5%;
+    font-size: 1.5em;
+    width: 80px;
+    height: 55px;
+    box-shadow: 8px 12px 16px 0 rgba(0, 2, 2, 2);
+    background-image: url(assets/imgs/cards/vintage/Spades/Ace.png);
+    background-position: center;
+    background-size: 125%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    color: white;
+}
+
+@keyframes pulsate {
+    100% {
+        text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #5271ff, 0 0 80px #5271ff, 0 0 90px #5271ff, 0 0 100px #5271ff, 0 0 150px #5271ff;
+    }
+    0% {
+        text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #5271ff, 0 0 73px #5271ff, 0 0 80px #5271ff, 0 0 94px #5271ff, 0 0 140px #5271ff;
+    }
 }
