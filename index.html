@@ -19,9 +19,19 @@
     </header>
     <main>
         <!-- Start of Modal -->
-        <section id="modal" class="game-modal">
+        <section id="modal" class="game-modal"><p id="how-to">How to:
+        
+            The goal in Blackjack is to get as close to 21 without going over, If you do you 'Bust’. Cards all have set values, all numbered cards have their written value (2-10) and face cards
+            (Jack, Queen, King) are worth 10 each. Ace is special and worth 11 pts. If you have an Ace and
+            you go bust the Ace will change into a 1. The game begins with the Dealer dealing all players 2 cards
+            each. All cards are  dealt face down so only the players knows their value. The dealer will show one card of their hand and have the
+            other face down, the dealer only reveals both cards if they have a natural 21(Ace + 10 point card). After everyone 
+            is dealt the game begins. The player is allowed to ‘Hit’ or ‘Stand’. Hit means the player will take another
+            card off of the top of the deck adding it to their total. Stand means that the player is done with their turn and can do no other moves until the
+            hand is over. After the player ‘Stands’ the dealer will flip their hidden card and hit until they hit 17 or higher.
+            If the dealer starts with 17 or higher, they will automatically ‘Stand’. Whoever is closer to 21 without ‘Busting’ wins.
+        </p>
             <div class="modal-content">
-
                 <br>
                 <h3 class="neonText">Let's Play</h3>
                 <br>
@@ -30,6 +40,9 @@
                 <br>
                 <br>
                 <button id="btn-play-new-game" class="btn" onclick="startGame() "> Start Game </button>
+                <br>
+                <br>
+                
             </div>
         </section>
         <!-- End of Modal -->
@@ -50,4 +63,5 @@
 
 </body>
 <script src="app.js"></script>
+
 </html>
